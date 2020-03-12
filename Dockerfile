@@ -37,7 +37,7 @@ ARG BUILD_DIR=/tmp/guacd-docker-BUILD
 ARG BUILD_DEPENDENCIES="              \
         autoconf                      \
         automake                      \
-        freerdp2-dev                  \
+        unzip                         \
         gcc                           \
         libcairo2-dev                 \
         libjpeg62-turbo-dev           \
@@ -51,12 +51,19 @@ ARG BUILD_DEPENDENCIES="              \
         libvncserver-dev              \
         libwebsockets-dev             \
         libwebp-dev                   \
+        ninja-build build-essential debhelper cdbs dpkg-dev autotools-dev cmake pkg-config xmlto libssl-dev docbook-xsl xsltproc libxkbfile-dev libx11-dev libwayland-dev libxrandr-dev libxi-dev libxrender-dev libxext-dev libxinerama-dev libxfixes-dev libxcursor-dev libxv-dev libxdamage-dev libxtst-dev libcups2-dev libpcsclite-dev libasound2-dev libpulse-dev libjpeg-dev libgsm1-dev libusb-1.0-0-dev libudev-dev libdbus-glib-1-dev uuid-dev libxml2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libfaad-dev libfaac-dev cmake libavutil-dev libavcodec-dev libavresample-dev \
         make"
 
 # Bring build environment up to date and install build dependencies
 RUN apt-get update                         && \
     apt-get install -y $BUILD_DEPENDENCIES && \
     rm -rf /var/lib/apt/lists/*
+
+RUN wget https://github.com/FreeRDP/FreeRDP/archive/cc801eded79c43bf8952cf8815d8e7a8f2a01da7.zip && \
+    unzip cc801eded79c43bf8952cf8815d8e7a8f2a01da7.zip && \
+    cmake . && \
+    cmake --build . --target install
+    
 
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"

@@ -67,7 +67,7 @@ RUN apt-get update                         && \
 
 RUN wget https://github.com/Smati/FreeRDP/archive/gucatest.zip && \
     unzip gucatest.zip && \
-    cd FreeRDP-cc801eded79c43bf8952cf8815d8e7a8f2a01da7 && \
+    cd FreeRDP-gucatest && \
     cmake . && \
     cmake --build . && \
     cpack && \

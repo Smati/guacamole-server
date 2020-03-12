@@ -67,8 +67,10 @@ RUN apt-get update                         && \
 
 RUN wget https://github.com/FreeRDP/FreeRDP/archive/cc801eded79c43bf8952cf8815d8e7a8f2a01da7.zip && \
     unzip cc801eded79c43bf8952cf8815d8e7a8f2a01da7.zip && \
+    cd FreeRDP-cc801eded79c43bf8952cf8815d8e7a8f2a01da7 && \
     cmake . && \
-    cmake --build . --target install
+    cmake --build . --target install && \
+    cd ..
     
 
 # Add configuration scripts

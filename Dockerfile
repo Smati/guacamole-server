@@ -54,6 +54,9 @@ ARG BUILD_DEPENDENCIES="              \
         ninja-build build-essential debhelper cdbs dpkg-dev autotools-dev cmake pkg-config xmlto libssl-dev docbook-xsl xsltproc libxkbfile-dev libx11-dev libwayland-dev libxrandr-dev libxi-dev libxrender-dev libxext-dev libxinerama-dev libxfixes-dev libxcursor-dev libxv-dev libxdamage-dev libxtst-dev libcups2-dev libpcsclite-dev libasound2-dev libpulse-dev libjpeg-dev libgsm1-dev libusb-1.0-0-dev libudev-dev libdbus-glib-1-dev uuid-dev libxml2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libfaad-dev cmake libavutil-dev libavcodec-dev libavresample-dev \
         make"
 
+RUN apt-get update                         && \
+    apt-get install -y wget
+
 RUN wget https://www.deb-multimedia.org/pool/main/f/faac/libfaac0_1.28-dmo5_amd64.deb && dpkg -i libfaac0_1.28-dmo5_amd64.deb
 RUN wget https://www.deb-multimedia.org/pool/main/f/faac/libfaac-dev_1.28-dmo5_amd64.deb && dpkg -i libfaac-dev_1.28-dmo5_amd64.deb
 

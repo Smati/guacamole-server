@@ -76,8 +76,7 @@ RUN git clone https://github.com/Smati/FreeRDP && \
     ldconfig && \
     cd ..
     
-RUN git clone https://github.com/Smati/FreeRDP && \
-    cd FreeRDP && \
+RUN cd FreeRDP && \
     git checkout gucatest && \
     cmake . && \
     cmake --build . --target install && \

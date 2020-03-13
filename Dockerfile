@@ -76,7 +76,12 @@ RUN git clone https://github.com/Smati/FreeRDP && \
     ldconfig && \
     cd ..
     
-COPY FreeRDP/libfreerdp "${PREFIX_DIR}/lib/freerdp2"
+RUN cd /usr/local && \
+    mkdir guacamole && \
+    cd guacamole && \
+    mkdir lib
+
+RUN mv FreeRDP "${PREFIX_DIR}/lib/freerdp2/"
 
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"

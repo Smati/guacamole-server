@@ -75,13 +75,6 @@ RUN git clone https://github.com/Smati/FreeRDP && \
     dpkg -i freerdp-2.0.0-rc4-Linux-x86_64.deb && \
     ldconfig && \
     cd ..
-    
-RUN cd FreeRDP && \
-    git checkout gucatest && \
-    cmake . && \
-    cmake --build . --target install && \
-    ldconfig && \
-    cd ..
 
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"
@@ -119,6 +112,7 @@ ARG RUNTIME_DEPENDENCIES="            \
         ghostscript                   \
         fonts-liberation              \
         fonts-dejavu                  \
+        freerdp
         xfonts-terminus"
 
 # Copy build artifacts into this stage

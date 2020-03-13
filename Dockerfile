@@ -73,7 +73,8 @@ RUN wget https://github.com/Smati/FreeRDP/archive/gucatest.zip && \
     cpack && \
     dpkg -i freerdp-2.0.0-rc4-Linux-x86_64.deb && \
     cd .. && \
-    ldconfig
+    ldconfig && \
+    mv FreeRDP-guactest/ FreeRDP
     
 
 # Add configuration scripts

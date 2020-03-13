@@ -70,7 +70,7 @@ RUN git clone https://github.com/Smati/FreeRDP && \
     cd FreeRDP && \
     git checkout gucatest && \
     cmake . && \
-    cmake --build . && \
+    cmake --build . --target install && \
     cpack && \
     dpkg -i freerdp-2.0.0-rc4-Linux-x86_64.deb && \
     ldconfig

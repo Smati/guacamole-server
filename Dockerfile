@@ -70,10 +70,19 @@ RUN git clone https://github.com/Smati/FreeRDP && \
     cd FreeRDP && \
     git checkout gucatest && \
     cmake . && \
-    cmake --build . --target install && \
+    cmake --build . && \
     cpack && \
     dpkg -i freerdp-2.0.0-rc4-Linux-x86_64.deb && \
-    ldconfig
+    ldconfig && \
+    cd ..
+    
+RUN git clone https://github.com/Smati/FreeRDP && \
+    cd FreeRDP && \
+    git checkout gucatest && \
+    cmake . && \
+    cmake --build . --target install && \
+    ldconfig && \
+    cd ..
 
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"

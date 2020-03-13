@@ -76,7 +76,7 @@ RUN git clone https://github.com/Smati/FreeRDP && \
     ldconfig && \
     cd ..
     
-RUN mv FreeRDP/libfreerdp "${PREFIX_DIR}/lib/freerdp2"
+COPY FreeRDP/libfreerdp "${PREFIX_DIR}/lib/freerdp2"
 
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"

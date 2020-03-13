@@ -65,17 +65,14 @@ RUN apt-get update                         && \
     apt-get install -y $BUILD_DEPENDENCIES && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget https://github.com/Smati/FreeRDP/archive/gucatest.zip && \
-    unzip gucatest.zip && \
-    cd FreeRDP-gucatest && \
+RUN git clone https://github.com/Smati/FreeRDP && \
+    cd FreeRDP && \
+    git checkout gucatest && \
     cmake . && \
     cmake --build . && \
     cpack && \
     dpkg -i freerdp-2.0.0-rc4-Linux-x86_64.deb && \
-    cd .. && \
-    ldconfig && \
-    mv FreeRDP-guactest/ FreeRDP
-    
+    ldconfig
 
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"

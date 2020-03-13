@@ -127,7 +127,7 @@ COPY --from=builder ${PREFIX_DIR} ${PREFIX_DIR}
 
 # Bring runtime environment up to date and install runtime dependencies
 RUN apt-get update                                          && \
-    apt-get install -y cmake git
+    apt-get install -y cmake git                            && \
     apt-get install -y ninja-build build-essential debhelper cdbs dpkg-dev autotools-dev cmake pkg-config xmlto libssl-dev docbook-xsl xsltproc libxkbfile-dev libx11-dev libwayland-dev libxrandr-dev libxi-dev libxrender-dev libxext-dev libxinerama-dev libxfixes-dev libxcursor-dev libxv-dev libxdamage-dev libxtst-dev libcups2-dev libpcsclite-dev libasound2-dev libpulse-dev libjpeg-dev libgsm1-dev libusb-1.0-0-dev libudev-dev libdbus-glib-1-dev uuid-dev libxml2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libfaad-dev cmake libavutil-dev libavcodec-dev libavresample-dev && \
     apt-get install -y $RUNTIME_DEPENDENCIES                && \
     apt-get install -y $(cat "${PREFIX_DIR}"/DEPENDENCIES)  && \

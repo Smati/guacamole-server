@@ -46,7 +46,7 @@ where_is_freerdp() {
     # to given file
     PATHS="$(ldd "$PLUGIN_FILE"              \
                  | awk '/=>/{print $(NF-1)}' \
-                 | grep 'libfreerdp'         \
+                 | grep 'freerdp'         \
                  | xargs -r dirname          \
                  | xargs -r realpath         \
                  | sort -u)"

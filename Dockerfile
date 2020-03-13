@@ -86,8 +86,8 @@ RUN mv FreeRDP "${PREFIX_DIR}/lib/freerdp2/"
 # Add configuration scripts
 COPY src/guacd-docker/bin "${PREFIX_DIR}/bin/"
 
-COPY FreeRDP/libfreerdp "${PREFIX_DIR}/bin/freerdp2/"
-COPY FreeRDP/libfreerdp "$BUILD_DIR"
+RUN cp -r FreeRDP/libfreerdp "${PREFIX_DIR}/bin/freerdp2/"
+RUN cp -r FreeRDP/libfreerdp "$BUILD_DIR"
 
 # Copy source to container for sake of build
 COPY . "$BUILD_DIR"

@@ -112,7 +112,7 @@ ARG RUNTIME_DEPENDENCIES="            \
         ghostscript                   \
         fonts-liberation              \
         fonts-dejavu                  \
-        freerdp
+        freerdp                       \
         xfonts-terminus"
 
 # Copy build artifacts into this stage
